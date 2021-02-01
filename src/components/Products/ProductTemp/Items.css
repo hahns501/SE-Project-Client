@@ -1,0 +1,8 @@
+.item{
+    border-style: solid;
+    border-color: black;
+    margin-top: 5px;
+    flex-direction: column;
+
+    padding-left: 10px;
+}
