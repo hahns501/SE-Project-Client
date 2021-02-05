@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
-import { Redirect, useLocation } from 'react-router-dom'
+import {Redirect, useLocation, Link, Route} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { setTrue } from "../../actions/auth"
 import './login.css'
+import Home from "../Home/Home";
 
-export default function Login(){
+const Login2 = () =>{
     const { state } = useLocation();
-    const { from } = state || { from: { pathname: "/" } };
-    const [ redirect, setRedirect] = useState(false);
     const [ loginData, setLoginData ] = useState({employeeID: '', pass: ''})
+    const [ isAuth, setisAuth ] = useState(false)
     const dispatch = useDispatch();
 
-    const login = () => {
-        fakeAuth.authenticate(() => {
-            setRedirect(true);
+    let loginAuth = false;
+    let logins = true;
 
-            dispatch(setTrue())
-        });
+    const login = () => {
+        // authenticate
+
+        // if true go to home else alert error
+        if(logins){
+            setisAuth(true)
+        }else{
+            console.log("Login Failed");
+        }
     };
 
-    if (redirect) {
-        return <Redirect to={from}/>
+    if(isAuth){
+        return <Redirect to={'/home'} push/>
     }
 
     return (
@@ -35,10 +40,4 @@ export default function Login(){
     )
 }
 
-export const fakeAuth = {
-    isAuthenticated: false,
-    authenticate(cb) {
-        this.isAuthenticated = true;
-        setTimeout(cb, 100);
-    }
-};
+export default Login2
