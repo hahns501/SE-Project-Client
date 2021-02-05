@@ -1,0 +1,32 @@
+.Header nav{
+    display: flex;
+    background-color: #457B9D;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header nav ul{
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+}
+
+.Header nav h1{
+    color:white;
+    padding-left: 20px;
+    font-size: xx-large;
+}
+
+.Header nav ul li {
+    padding: 10px;
+}
+
+.Header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.current {
+    border-bottom: 4px solid white;
+}

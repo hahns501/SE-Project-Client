@@ -1,33 +1,9 @@
-nav {
-    display: flex;
-    background-color: black;
-    margin-bottom: 5px;
-
-    align-items: center;
-    justify-content: space-between;
+body{
+    margin: 0;
+    padding: 0;
 }
 
-nav ul{
-    display: flex;
-    list-style: none;
-    margin-right: 20px;
+.Main{
+    padding: 8px;
 }
 
-nav h1{
-    color:white;
-    padding-left: 20px;
-    font-size: 40px;
-}
-
-nav ul li {
-    padding: 10px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.current {
-    border-bottom: 4px solid white;
-}

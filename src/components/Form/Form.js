@@ -16,9 +16,10 @@ const Form = () => {
     }
 
     return (
-        <form>
-            <label className={"inputForm"}>
-                <h2>Item Input</h2>
+        <div>
+            <form>
+                <label className={"inputForm"}>
+                    <h2>Input Item</h2>
                     <label>
                         ID
                         <input placeholder={"Item lookup code"} name={"lookupCode"} type={"text"} value={postData.lookupCode} onChange={(e) => setPostData({...postData,lookupCode: e.target.value})}/>
@@ -27,11 +28,10 @@ const Form = () => {
                         Qt
                         <input placeholder={"Item Count"} name={"count"} type="number" value={postData.count} onChange={(e) => setPostData({...postData,count: e.target.value})}/>
                     </label>
-            </label>
-            <div>
-                <button onClick={handleSubmit}>Submit</button>
-            </div>
-        </form>
+                    <button onClick={handleSubmit}>Submit</button>
+                </label>
+            </form>
+        </div>
     )
 }
 

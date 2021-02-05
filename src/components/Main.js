@@ -5,6 +5,8 @@ import Login from './Login/Login'
 import Shop from './Shop/Shop'
 import PrivateRoute from "../Auth";
 
+import './Main.css'
+
 const Main = () =>{
 
     return(
