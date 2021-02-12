@@ -9,3 +9,11 @@ export const setTrue = () => {
         type: 'setTrue'
     };
 };
+
+export const setFalse = () => {
+    sessionStorage.clear();
+
+    return {
+        type: 'setFalse'
+    }
+}

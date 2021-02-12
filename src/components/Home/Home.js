@@ -19,6 +19,9 @@ const Home = () => {
             <Button disabled variant="contained" color="primary">
                 Cashier Report
             </Button>
+            <Button variant="contained" color="primary" component={Link} to={"/test"}>
+                Testing
+            </Button>
         </div>
     )
 }

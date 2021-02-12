@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 export default(state = false, action) =>{
     switch (action.type){
         case 'getState':

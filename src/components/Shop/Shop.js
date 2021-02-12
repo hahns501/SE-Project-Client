@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Products from './../Products/Products'
 import Form from "./../Form/Form";
 import SearchProduct from "./SearchProduct/SearchProduct";
 import './Shop.css'
 import AddIcon from '@material-ui/icons/Add';
-import {NavLink} from "react-router-dom";
-
-
 
 const Shop = () => {
     const [formShow, setformShow] = useState(false)

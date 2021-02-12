@@ -1,9 +1,26 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from "react-redux"
+import Employee from './Employee/employee'
+import {getUsers} from "../../actions/users";
 
 const EmployeeDetail = () =>{
+    const dispatch = useDispatch();
+    const employees = useSelector((state) => state.user);
+
+    useEffect(() => {
+        dispatch(getUsers());
+    },[dispatch])
+
+    console.log(employees)
+
     return(
         <div>
             <h1>Employee Detail Page</h1>
+            <div>
+                {employees.map((emp) => (
+                    <Employee key={emp.fName} employee={emp}/>
+                ))}
+            </div>
         </div>
     )
 }

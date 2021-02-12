@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
-import {Redirect, useLocation, Link, Route} from 'react-router-dom'
-import {useDispatch, useSelector} from 'react-redux'
-import './login.css'
-import Home from "../Home/Home";
+import { Redirect } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { findUser } from "../../actions/users";
+import { setTrue } from "../../actions/auth";
+import LoginTesting from "./LoginTesting/LoginTesting";
 
-const Login2 = () =>{
-    const { state } = useLocation();
-    const [ loginData, setLoginData ] = useState({employeeID: '', pass: ''})
-    const [ isAuth, setisAuth ] = useState(false)
+import './login.css'
+
+const Login = () =>{
+    const [ loginData, setLoginData ] = useState({employeeID: '', password: ''})
+    const [ isAuth, setIsAuth ] = useState(false)
     const dispatch = useDispatch();
 
-    let loginAuth = false;
-    let logins = true;
-
-    const login = () => {
+    const Login = () => {
         // authenticate
+        dispatch(findUser(loginData)).then(() => {
+            let user = JSON.parse(sessionStorage.getItem("user"));
 
-        // if true go to home else alert error
-        if(logins){
-            setisAuth(true)
-        }else{
-            console.log("Login Failed");
-        }
+            if (user != null){
+                console.log("Login Success")
+                setIsAuth(true);
+                dispatch(setTrue());
+            }else{
+                console.log("Login Failed")
+            }
+        })
     };
 
     if(isAuth){
@@ -33,11 +36,12 @@ const Login2 = () =>{
             <div className={"loginForm"}>
                 <label>Login</label>
                 <input placeholder={"Employee ID"} type={"text"} value={loginData.employeeID} onChange={(e) => setLoginData({...loginData, employeeID: e.target.value})}/>
-                <input placeholder={"Password"} type={"text"} value={loginData.pass} onChange={(e) => setLoginData({...loginData, pass: e.target.value})}/>
-                <button onClick={login}>Sign In</button>
+                <input placeholder={"Password"} type={"text"} value={loginData.password} onChange={(e) => setLoginData({...loginData, password: e.target.value})}/>
+                <button onClick={Login}>Sign In</button>
+                <LoginTesting/>
             </div>
         </div>
     )
 }
 
-export default Login2
+export default Login

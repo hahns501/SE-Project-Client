@@ -12,7 +12,6 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createProduct(postData));
-
     }
 
     return (

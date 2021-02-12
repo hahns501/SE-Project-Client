@@ -2,6 +2,7 @@ import * as api from '../api';
 
 // Action Creators
 export const getProducts = () => async (dispatch) => {
+    console.log("getProducts Action");
     try{
         //
         const { data } = await api.fetchPosts();
@@ -14,11 +15,12 @@ export const getProducts = () => async (dispatch) => {
 }
 
 export const createProduct = (product) => async (dispatch) => {
+    console.log("createProduct Action");
     try{
         //makes a api request to the backend server to create a post
         const { data } = await api.createPost(product);
 
-        dispatch({ type: 'CREATE', payload: data });
+        dispatch({ type: 'CREATE_PRODUCT', payload: data });
     } catch(error) {
         console.log(error);
     }

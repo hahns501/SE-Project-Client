@@ -35,3 +35,14 @@
     border-radius: 4px;
     margin: 10px auto;
 }
+
+.loginTest {
+    display:flex;
+
+    justify-content: center;
+    flex-direction: column;
+
+    margin: 0px auto;
+    min-width: 350px;
+    font-family: sans-serif;
+}
