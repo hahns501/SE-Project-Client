@@ -11,6 +11,7 @@ const url2 = 'https://eurekahealth.herokuapp.com/users';
 
 export const fetchPosts = () => axios.get(url);
 export const createPost = (newProduct) => axios.post(url, newProduct);
+export const deleteProduct = (id) => axios.delete(`${url}/${id}`);
 
 export const createUser = (newUser) => axios.post(`${url2}/create`, newUser);
 export const fetchUsers = () => axios.get(url2);

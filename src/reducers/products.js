@@ -8,6 +8,9 @@ export default (products = [], action) => {
         case 'CREATE_PRODUCT':
             console.log("CREATE_PRODUCT Reducer")
             return [...products, action.payload];
+        case 'DELETE':
+            console.log("DELETE Reducer")
+            return products.filter((product) => product._id !== action.payload );
         default:
             return products;
     }
