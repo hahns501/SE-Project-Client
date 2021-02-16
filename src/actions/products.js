@@ -26,3 +26,14 @@ export const createProduct = (product) => async (dispatch) => {
     }
 }
 
+export const deleteProduct = (id) => async (dispatch) =>{
+    console.log("deleteProduct Action")
+
+    try{
+        await api.deleteProduct(id);
+        dispatch({type:'DELETE', payload: id});
+    }catch(error){
+        console.log(error)
+    }
+}
+
