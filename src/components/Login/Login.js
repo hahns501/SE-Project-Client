@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux'
 import { findUser } from "../../actions/users";
 import { setTrue } from "../../actions/auth";
 import LoginTesting from "./LoginTesting/LoginTesting";
+import {validateInput} from "./validateInput.js";                   //Added by Fah Sysavanh to validate user input of id and passcode
+// <button onClick = {() => validateInput(loginData.employeeID,loginData.password)} > Testing validating input </button>
 
 import './login.css'
 
@@ -37,7 +39,7 @@ const Login = () =>{
                 <label>Login</label>
                 <input placeholder={"Employee ID"} type={"text"} value={loginData.employeeID} onChange={(e) => setLoginData({...loginData, employeeID: e.target.value})}/>
                 <input placeholder={"Password"} type={"text"} value={loginData.password} onChange={(e) => setLoginData({...loginData, password: e.target.value})}/>
-                <button onClick={Login}>Sign In</button>
+                <button onClick={() => {Login(); validateInput(loginData.employeeID,loginData.password)}} >Sign In</button>
                 <LoginTesting/>
             </div>
         </div>
