@@ -9,6 +9,9 @@ const LoginTesting = () => {
     const [ shiftManager ] = useState({employeeID: '90205', password:'1234'});
     const [ cashier ] = useState({employeeID: '08909', password:'1234'});
     const [ isAuth, setIsAuth ] = useState(false);
+    const [isGManager,setIsGManager] = useState(false);
+    const [isSManager,setIsSManager] = useState(false);
+    const [isCashier,setIsCashier] = useState(false);
     const dispatch = useDispatch();
 
 
