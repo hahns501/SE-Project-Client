@@ -27,13 +27,7 @@ export const findUser = (user) => async (dispatch) => {
     // console.log(user)
     try{
         const { data } = await api.findUser(user);
-        // console.log(data)
 
-        // if(data !== "null"){
-        //     sessionStorage.setItem('user', data);
-        // }else{
-        //     sessionStorage.setItem('user', "null");
-        // }
         sessionStorage.setItem('user', JSON.stringify(data));
     }catch(error){
         console.log(error.message)

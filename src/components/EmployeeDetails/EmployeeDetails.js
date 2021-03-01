@@ -5,7 +5,7 @@ import {getUsers} from "../../actions/users";
 
 const EmployeeDetail = () =>{
     const dispatch = useDispatch();
-    const employees = useSelector((state) => state.user);
+    const employees = useSelector((state) => state.users);
 
     useEffect(() => {
         dispatch(getUsers());
@@ -18,7 +18,7 @@ const EmployeeDetail = () =>{
             <h1>Employee Detail Page</h1>
             <div>
                 {employees.map((emp) => (
-                    <Employee key={emp.fName} employee={emp}/>
+                    <Employee key={emp._id} employee={emp}/>
                 ))}
             </div>
         </div>

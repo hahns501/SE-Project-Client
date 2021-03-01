@@ -1,19 +1,24 @@
-export const switchState = () => {
-    return {
-        type: 'switch'
-    };
-};
+import * as api from "../api";
 
-export const setTrue = () => {
-    return {
-        type: 'setTrue'
-    };
-};
+export const loginUser = (user) => async (dispatch) => {
+    console.log("loginUser Action");
+    try{
+        const { data } = await api.loginUser(user);
 
-export const setFalse = () => {
-    sessionStorage.clear();
+        dispatch({ type: 'AUTH', data});
+    }catch(error){
+        console.log(error.message);
+    }
+}
 
-    return {
-        type: 'setFalse'
+export const logoutUser = () => async (dispatch) =>{
+    console.log("AUTH logoutUser Action");
+
+    try{
+        await api.logoutUser(JSON.parse(localStorage.getItem('user')));
+
+        dispatch({type: 'LOGOUT'});
+    }catch(error){
+        console.log(error.message);
     }
 }

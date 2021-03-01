@@ -1,18 +1,20 @@
 //Code created by Fah Sysavanh
-export function validateInput(id,pw)
-{
+export function validateInput(id,pw){
 	//storing user input into given variables
-	var employeeID = id;
-	var password = pw;
-
+	let employeeID = id;
 	//If employeeID field is blank or not numeric, alert
-	if (employeeID == '' || isNaN(employeeID))
+	if (employeeID === '' || isNaN(employeeID)){
 		alert('Employee ID should not be left blank or be a string of characters... Please try again');
-	
+		return false;
+	}
+
 	//If password is blank, try again
-	else if (password == '')
+	else if (pw === ''){
 		alert('Password should not be blank. Please try again');
-	else
-		alert('Input successful');
+		return false
+	}
+	else{
+		return true;
+	}
 
 }
