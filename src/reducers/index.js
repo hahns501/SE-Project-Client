@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 
 import products from './products';
 import authReducer from './auth';
-import user from './user';
+import users from './users';
+import activeUsers from "./activeUsers";
 
-export default combineReducers({products, authReducer, user})
+export default combineReducers({products, authReducer, users, activeUsers})

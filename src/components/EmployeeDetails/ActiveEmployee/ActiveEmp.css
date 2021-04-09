@@ -1,19 +1,15 @@
-.item{
+.activeEmp{
     border-style: solid;
     border-color: black;
     margin-top: 5px;
     flex-direction: column;
 
     border-radius: 7px;
+
+    overflow-wrap: break-word;
 }
 
-.first-line{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.item h2{
-    padding: 12px;
+.activeEmp h2{
+    padding: 5px;
     margin: 0;
 }

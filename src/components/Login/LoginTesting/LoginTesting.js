@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {findUser} from "../../../actions/users";
-import {setTrue} from "../../../actions/auth";
+import {} from "../../../actions/auth";
 import {Redirect} from "react-router-dom";
 
 const LoginTesting = () => {
@@ -21,7 +21,6 @@ const LoginTesting = () => {
             if (user != null){
                 console.log("Login Success")
                 setIsAuth(true);
-                dispatch(setTrue());
             }else{
                 console.log("Login Failed")
             }
@@ -36,7 +35,6 @@ const LoginTesting = () => {
             if (user != null){
                 console.log("Login Success")
                 setIsAuth(true);
-                dispatch(setTrue());
             }else{
                 console.log("Login Failed")
             }
@@ -51,7 +49,6 @@ const LoginTesting = () => {
             if (user != null){
                 console.log("Login Success")
                 setIsAuth(true);
-                dispatch(setTrue());
             }else{
                 console.log("Login Failed")
             }

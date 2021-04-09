@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Products from './../Products/Products'
+import React, {useEffect, useState} from 'react';
+import Products from './../Products/Products';
 import Form from "./../Form/Form";
 import SearchProduct from "./SearchProduct/SearchProduct";
 import './Shop.css'
@@ -12,16 +12,22 @@ const Shop = () => {
         setformShow(!formShow)
     }
 
+    useEffect(() =>{
+        let user = JSON.parse(localStorage.getItem('user'));
+
+        console.log(user.manager);
+
+    },[]);
+
     return(
         <div className={"Shop"}>
-            <SearchProduct/>
             <div className={"productBar"}>
                 <h1 className={"pro"}>Products</h1>
-                <AddIcon className={"addIcon"} onClick={showInput}/>
+                {JSON.parse(localStorage.getItem('user')).manager ? <AddIcon className={"addIcon"} onClick={showInput}/> : ""}
             </div>
 
             {formShow ? <Form/> : ""}
-            <Products />
+            <SearchProduct isManager={JSON.parse(localStorage.getItem('user')).manager}/>
         </div>
     )
 }

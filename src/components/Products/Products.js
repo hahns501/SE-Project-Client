@@ -15,13 +15,13 @@ const Products = () =>{
         dispatch(getProducts());
     }, [dispatch])
 
-    console.log(products)
+    // console.log(products)
 
     return (
         <div className={"productMain"}>
             <div>
                 {products.map((item) => (
-                    <Items key={item.lookupCode} item={item} />
+                    <Items key={item._id} item={item} />
                 ))}
             </div>
         </div>

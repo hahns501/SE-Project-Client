@@ -11,6 +11,17 @@ export const createUser = (user) => async (dispatch) => {
     }
 }
 
+export const deleteUser = (id) => async (dispatch) =>{
+    console.log("Delete User Action");
+
+    try{
+        await api.deleteUser(id);
+        dispatch({type:'DELETE_USER', payload: id})
+    }catch(error){
+        console.log(error.message);
+    }
+}
+
 export const getUsers = () => async (dispatch) => {
     console.log("Get all users Action")
     try{
@@ -27,15 +38,19 @@ export const findUser = (user) => async (dispatch) => {
     // console.log(user)
     try{
         const { data } = await api.findUser(user);
-        // console.log(data)
 
-        // if(data !== "null"){
-        //     sessionStorage.setItem('user', data);
-        // }else{
-        //     sessionStorage.setItem('user', "null");
-        // }
         sessionStorage.setItem('user', JSON.stringify(data));
     }catch(error){
         console.log(error.message)
+    }
+}
+
+export const updateUser = (id, user) => async (dispatch) =>{
+    try{
+        const {data} = await api.updateUser(id, user);
+
+        dispatch({type: 'UPDATE', payload: data});
+    }catch(error){
+        console.log(error.message);
     }
 }

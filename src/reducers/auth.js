@@ -1,18 +1,17 @@
 // eslint-disable-next-line
-export default(state = false, action) =>{
-    switch (action.type){
-        case 'getState':
-            return state
-        case 'setTrue':{
-            return state = true;
-        }
-        case 'setFalse':{
-            return state = false;
-        }
-        case 'switch':{
-            return !state
-        }
+const authReducer = (state = { authData: null}, action) => {
+    switch(action.type){
+        case 'AUTH':
+            localStorage.setItem('user', JSON.stringify({...action?.data.result}));
+
+            return {...state, authData: action?.data};
+        case 'LOGOUT':
+            localStorage.clear();
+
+            return {...state, authData:null};
         default:
-            return state
+            return state;
     }
-}
+};
+
+export default authReducer;

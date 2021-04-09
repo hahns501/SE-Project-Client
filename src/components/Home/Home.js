@@ -1,27 +1,32 @@
-import React from 'react'
-import Button from "@material-ui/core/Button";
+import React, {useEffect, useState} from 'react'
 import './Home.css'
-import {Link} from 'react-router-dom'
+
+import ManagerHome from "./managerHome";
+import NonManagerHome from "./nonManagerHome";
 
 const Home = () => {
+    const [isManager,setIsManager] = useState(null);
+
+    useEffect(() =>{
+        let user = JSON.parse(localStorage.getItem('user'));
+
+        if(user !== null){
+            let manager = user.manager;
+
+            if(manager === true){
+                setIsManager(true);
+            }else{
+                setIsManager(false);
+            }
+        }
+
+    },[]);
 
     return(
         <div className={"mainMenu"}>
-            <Button disabled variant="contained" color="primary">
-                Start Transaction
-            </Button>
-            <Button variant="contained" color="primary" component={Link} to={"/shop"}>
-                Product List
-            </Button>
-            <Button variant="contained" color="primary" component={Link} to={"/employd"}>
-                Employee Details
-            </Button>
-            <Button disabled variant="contained" color="primary">
-                Cashier Report
-            </Button>
-            <Button variant="contained" color="primary" component={Link} to={"/test"}>
-                Testing
-            </Button>
+            <div>
+                {isManager ? <ManagerHome /> : <NonManagerHome />}
+             </div>
         </div>
     )
 }
