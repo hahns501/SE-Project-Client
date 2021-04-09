@@ -4,10 +4,11 @@ export const loginUser = (user) => async (dispatch) => {
     console.log("loginUser Action");
     try{
         const { data } = await api.loginUser(user);
-
+        console.log("test");
+        console.log(data);
         dispatch({ type: 'AUTH', data});
     }catch(error){
-        console.log(error.message);
+        console.log(error);
     }
 }
 
@@ -19,6 +20,7 @@ export const logoutUser = () => async (dispatch) =>{
 
         dispatch({type: 'LOGOUT'});
     }catch(error){
+        localStorage.clear();
         console.log(error.message);
     }
 }

@@ -22,7 +22,7 @@ export const createProduct = (product) => async (dispatch) => {
 
         dispatch({ type: 'CREATE_PRODUCT', payload: data });
     } catch(error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
 
@@ -33,7 +33,19 @@ export const deleteProduct = (id) => async (dispatch) =>{
         await api.deleteProduct(id);
         dispatch({type:'DELETE', payload: id});
     }catch(error){
-        console.log(error)
+        console.log(error.message)
+    }
+}
+
+export const updateProduct = (id, product) => async (dispatch) =>{
+    console.log("Updating product action")
+
+    try{
+        const {data} = await api.updateProduct(id, product);
+
+        dispatch({type: 'UPDATE_PROD', payload: data});
+    }catch(error){
+        console.log(error.message)
     }
 }
 

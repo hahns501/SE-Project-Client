@@ -15,7 +15,7 @@ const Products = () =>{
         dispatch(getProducts());
     }, [dispatch])
 
-    console.log(products)
+    // console.log(products)
 
     return (
         <div className={"productMain"}>

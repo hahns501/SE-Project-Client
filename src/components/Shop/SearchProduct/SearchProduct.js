@@ -1,15 +1,23 @@
-import React, { useState }from 'react';
-import './SearchProduct.css'
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+
+import Products from "../../Products/Products";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from '@material-ui/icons/Search'
 import Input from '@material-ui/core/Input'
+import {getProducts} from "../../../actions/products";
+import './SearchProduct.css'
+import Items from "../../Products/ProductTemp/Items";
 
-const SearchProduct = () =>{
+
+const SearchProduct = (props) =>{
     const [productSearchData, setProductSearchData] = useState("")
+    const products = useSelector((state) => state.products);
+    const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(productSearchData)
+        // console.log(productSearchData)
     }
 
     const onEnterPress = (e) => {
@@ -17,6 +25,23 @@ const SearchProduct = () =>{
             handleSubmit(e)
         }
     }
+
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch])
+
+    const filterSearch = (products, productSearchData) => {
+        if (!productSearchData){
+            return products;
+        }
+
+        return products.filter((product) => {
+            const productName = product.lookupCode;
+            return productName.includes(productSearchData)
+        })
+    }
+
+    const filteredSearch = filterSearch(products,productSearchData)
 
     return(
         <div className={"SearchProduct"}>
@@ -31,6 +56,13 @@ const SearchProduct = () =>{
                     </InputAdornment>
                 }
             />
+
+
+        {filteredSearch.map((item) => (
+            <Items key={item._id} item={item} isManager={props.isManager} />
+        ))}
+
+        {/*<Products/>*/}
         </div>
 
     )

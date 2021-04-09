@@ -27,7 +27,7 @@ const Form = () => {
                         Qt
                         <input placeholder={"Item Count"} name={"count"} type="number" value={postData.count} onChange={(e) => setPostData({...postData,count: e.target.value})}/>
                     </label>
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button onClick={handleSubmit} >Submit</button>
                 </label>
             </form>
         </div>
